@@ -26,7 +26,7 @@ app.set('env', process.env.SERVICE_MODE);
 
 // app.use('/bower',  express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public/dist'));          // set the static files location /public/img will be /img for users
-if(app.get('env')==="development") app.use(morgan('dev'));    // log every request to the console
+if (app.get('env') === "development") app.use(morgan('dev'));    // log every request to the console
 app.use(bodyParser.urlencoded({'extended': 'true'}));         // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());                                   // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
@@ -50,7 +50,7 @@ console.log();
 var isDevMode = (process.env.SERVICE_MODE === "development");
 
 // Monitoring
-if(isDevMode){
+if (isDevMode) {
     app.use(AppUtil.showHeaderPath);
     app.use(AppUtil.showRequestArgs);
 }
@@ -67,34 +67,38 @@ models.sequelize.sync({force: isDevMode}).then(function () {
     // Generate Example Data
     if (isDevMode) {
         var baseDataPromises = [
-            models.Label.create({title: "라벨1", description: "첫번째 라벨"}),
+
+            // Labels
+            models.Label.create({title: "과제", description: "나의 과제"}),
             models.Label.create({
-                title: "라벨2",
+                title: "살것",
                 description: "두번째 라벨 : HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your application."
             }),
-            models.Label.create({title: "라벨3", description: ""}),
-            models.Label.create({title: "라벨4", description: ""}),
-            models.Memo.create({title: "메모1", content: "미지정 메모"}),
+            models.Label.create({title: "할것", description: ""}),
+            models.Label.create({title: "깡통라벨", description: ""}),
+            
+            // Memos
+            models.Memo.create({title: "test 111", content: "테스트 짧은 메모"}),
             models.Memo.create({
-                title: "메모2",
-                content: "긴 메모, 쾌도 홍길동 이후로 사극에서 만나고 싶었던 장근석의 출연. 그리고 성인이 된 첫 작품으로 또 사극을 선택한 여진구. 왠지 사극 왕에는 안 어울릴 것 같은 숙종의 최민수. 때로는 인자하게.. 때로는 비열하게 연기하는 사극 연기 지존 전광렬!"
+                title: "test 222",
+                content: "테스트 긴 메모, 쾌도 홍길동 이후로 사극에서 만나고 싶었던 장근석의 출연. 그리고 성인이 된 첫 작품으로 또 사극을 선택한 여진구. 왠지 사극 왕에는 안 어울릴 것 같은 숙종의 최민수. 때로는 인자하게.. 때로는 비열하게 연기하는 사극 연기 지존 전광렬!"
             }),
-            models.Memo.create({title: "메모3", content: "짧은 메모"}),
-            models.Memo.create({title: "메모4", content: "퐁퐁 퐁퐁"}),
-            models.Memo.create({title: "메모5", content: "감사합니다"}),
-            models.Memo.create({title: "메모6", content: "AngularJS는 사랑입니다."}),
-            models.Memo.create({title: "메모7", content: "무슨게임이 재미있을까요? 롤은 너무 어렵습니다."})
+            models.Memo.create({title: "블로깅하기", content: "아직 공부해야할 것이 많습니다."}),
+            models.Memo.create({title: "디자인패턴 공부", content: "이건 도서관 가야할듯. 책이 넘 비싸거든.."}),
+            models.Memo.create({title: "apple computer", content: "iMac 간지 끝남.."}),
+            models.Memo.create({title: "apple laptop", content: "Macbook 갖고싶드아..."}),
+            models.Memo.create({title: "재미있는게임 찾기", content: "무슨게임이 재미있을까요? 롤은 너무 어렵습니다."})
         ];
         Q.all(baseDataPromises).spread(function (l1, l2, l3, l4, m1, m2, m3, m4, m5, m6, m7) {
-            l1.addMemos([m3, m2, m4]);
-            l2.addMemos([m1, m2, m5, m6, m7]);
-            l3.addMemos([m1, m2]);
+            l1.addMemos([m3, m4]);
+            l2.addMemos([m1, m2, m5, m6]);
+            l3.addMemos([m1, m2, m3, m4, m7]);
         }).catch(function (err) {
             console.log(err);
         })
     }
 
     app.listen(app.get('port'), function () {
-        console.log('\nHTTP Server listening on port %d in %s mode', app.get('port'), app.get('env'),'\n');
+        console.log('\nHTTP Server listening on port %d in %s mode', app.get('port'), app.get('env'), '\n');
     });
 });

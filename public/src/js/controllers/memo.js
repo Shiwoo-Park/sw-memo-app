@@ -1,4 +1,5 @@
 app.controller("MemoListController", function ($scope, $routeParams, swMemoApi) {
+    $scope.searchInput = "";
     var labelID = $routeParams.labelID;
 
     var loadMemos = function () {

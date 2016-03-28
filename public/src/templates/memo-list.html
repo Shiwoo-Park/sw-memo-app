@@ -5,10 +5,17 @@
             <span class="text-big">{{label.title+"&nbsp;" || ""}}Memos</span>
         </div>
 
-        <div class="list-group margin-top">
+        <div class="input-group margin-top">
+            <span class="input-group-addon">
+                <i class="fa fa-search"></i>
+            </span>
+            <input type="text" class="form-control" ng-model="searchInput">
+        </div>
 
-            <span ng-repeat="memo in memos" class="margin-top">
-                <a href="#/memos/{{memo.id}}" class="btn btn-default margin-top" style="width:100%; border:1px black solid;">
+        <div class="list-group">
+            <span ng-repeat="memo in memos | filter: searchInput" class="margin-top">
+                <a href="#/memos/{{memo.id}}" class="btn btn-default margin-top"
+                   style="width:100%; border:1px black solid;">
                     <span class="text-big" style="font-weight:bold;">{{memo.title}}</span>
                 </a>
             </span>
