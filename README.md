@@ -29,6 +29,8 @@
 - Install font-awesome by bower
 - Setup environments (DB config, Service Mode)
 - Run gulp
+- Run MySQL Server
+- Setup public/src/js/define.js (API server domain)
 - Start Server
 
 ### Setup (Console ver.)

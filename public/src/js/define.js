@@ -1,5 +1,6 @@
 window.APPENV = {
-    domain: "http://172.30.1.1:8080" // Affects to CORS issues (Reject other Cross Domain XMLHttpRequests)
+    // Affects to CORS issues (Reject other Cross Domain XMLHttpRequests)
+    domain: "http://localhost:8080"
 };
 
 function wrapUrl(path) {
