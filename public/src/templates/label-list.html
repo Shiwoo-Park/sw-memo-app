@@ -1,0 +1,54 @@
+<div class="row margin-zero">
+    <div class="col-sm-10 col-sm-offset-1">
+
+        <div class="text-center">
+            <span class="text-big">Labels</span>
+            <span class="badge">{{labels.length}}</span>
+        </div>
+
+        <div class="list-group margin-top">
+
+            <span class="margin-top ">
+                <a href="#/memos">
+                    <div class="list-group-item margin-top app-label active text-center">
+                        <span>
+                            <span style="font-weight:800;">TOTAL MEMOS&nbsp;</span>
+                            <span class="badge">{{totalCount}}</span>
+                        </span>
+                    </div>
+                </a>
+            </span>
+
+            <span ng-repeat="label in labels" class="margin-top">
+                <div class="list-group-item margin-top app-label">
+                    <span>
+                        <span style="font-weight:800;">{{label.title}}</span>
+                        <span class="badge">{{label.memoCount || 0}}</span>
+                        <span ng-if="label.description"><br/>{{" - " + label.description}}</span>
+                    </span>
+
+                    <span class="pull-right">
+                        <a href="#/labels/{{label.id}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                        <span class="btn btn-danger" ng-click="removeLabel(label.id);">
+                            <i class="fa fa-trash"></i>
+                        </span>
+                        <a href="#/labels/{{label.id}}/memos" class="btn btn-primary">
+                            <i class="fa fa-list"></i>
+                        </a>
+                        <a href="#/labels/{{label.id}}/memos/create" class="btn btn-success">
+                            <i class="fa fa-plus-square"></i>
+                        </a>
+                    </span>
+
+                </div>
+            </span>
+
+            <a href="#/labels/create">
+                <span class="list-group-item btn btn-primary margin-top">
+                    <i class="fa fa-plus"></i>
+                </span>
+            </a>
+
+        </div>
+    </div>
+</div>

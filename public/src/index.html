@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="shiwooMemoApp">
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>SW-Memo</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body ng-controller="IndexController">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/"><i class="fa fa-home"></i></a>
+            <a class="navbar-brand" href="#/labels"><i class="fa fa-tag"></i></a>
+            <a class="navbar-brand" href="#/memos"><i class="fa fa-list"></i></a>
+        </div>
+    </div>
+</nav>
+
+<div id="test" ng-controller="testController">
+</div>
+
+<div id="content">
+    <div ng-view></div>
+</div>
+
+<div id="footer">
+    <b class="text-big">Created by Shiwoo Park</b>
+    <br/><br/>
+    <b>Contact : </b> 010-6599-일육구구<br/>
+    <b>Email : </b> woozin23@gmail.com
+</div>
+
+<script src="/js/main.js"></script>
+
+</body>
+
+</html>

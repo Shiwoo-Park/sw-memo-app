@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+
+        <div class="text-center"><span class="text-big">Create / Edit Label</span></div>
+
+        <label for="labelTitle">Title : </label>
+        <input id="labelTitle" class="form-control" type='text' ng-model='formData.title' autofocus/>
+
+        <label for="labelDesc" class="margin-top">Description : </label>
+        <input id="labelDesc" class="form-control" type='text' ng-model='formData.description'/>
+
+        <span ng-if="formData.id">
+            <span class="btn btn-primary form-control margin-top" type='submit' ng-click="updateLabel()"/>라벨 업데이트</span>
+        </span>
+        <span ng-if="!formData.id">
+            <span class="btn btn-primary form-control margin-top" type='submit' ng-click="createLabel()"/>라벨 등록하기</span>
+        </span>
+    </div>
+</div>
+

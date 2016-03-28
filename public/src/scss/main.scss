@@ -1,0 +1,72 @@
+@import "bootstrap";
+@import "bootstrap/theme";
+@import "font-awesome";
+
+// Alerts
+// -------------------------
+
+.alert {
+  margin-top: 20px;
+}
+
+// Thumbnails
+// -------------------------
+
+.thumbnail {
+  padding: 0;
+  border-radius: 0;
+  box-shadow: 0 0 5px #ccc, inset 0 0 0 #000;
+}
+
+// Font Icons
+// -------------------------
+
+.fa {
+  margin-right: 3px;
+}
+
+// Hantax Custom
+// -------------------------
+.text-big {
+  font-weight:bold;
+  font-size: 20px;
+}
+
+th {
+  text-align: center;
+}
+
+.container {
+  width:100%
+}
+
+.margin-top{
+  margin-top:10px;
+}
+
+.margin-zero{
+  margin:0;
+}
+
+.padding-zero{
+  margin:0;
+}
+
+#content{
+  background-color: #eee;
+  padding-top: 70px;
+  padding-bottom: 20px;
+}
+
+#footer{
+  padding:15px;
+  background-color: #222;
+  color:#9d9d9d;
+  text-align: center;
+}
+
+.app-label{
+  display: inline-block;
+  min-height: 45px;
+  width:100%;
+}

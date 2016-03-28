@@ -1,0 +1,50 @@
+<div class="row">
+    <style>
+        .autocomplete-suggestion {
+            background-color: white;
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            border-top: 0;
+        }
+    </style>
+
+    <div class="col-xs-10 col-xs-offset-1">
+
+        <div class="text-center"><span class="text-big">Create / Edit Memo</span></div>
+
+        <label for="memoTitle">Title : </label>
+        <input id="memoTitle" class="form-control" type='text' ng-model='memo.title' autofocus/>
+
+        <label for="memoContent" class="margin-top">Content : </label>
+        <textarea rows="10" id="memoContent" class="form-control" ng-model='memo.content'></textarea>
+
+        <label for="memoLabels" class="margin-top">Labels : </label>
+        <div id="memoLabels">
+            <span ng-repeat="label in labels">
+                <a href="#/labels/{{label.id}}/memos">
+                    <i class="fa fa-tag">&nbsp;{{label.title}}</i>
+                </a>
+                <span class="btn" ng-click="removeLabelFromMemo(label.id)" style="padding:0">
+                    <i class="fa fa-trash text-danger"></i>
+                </span>
+                &nbsp;&nbsp;
+            </span>
+            <form>
+                <input type="text" id="autocomplete"/>
+                <input type="submit" value="추가" ng-click="addLabelToMemo()"/>
+            </form>
+        </div>
+
+        <label for="memoLabels" class="margin-top">Last edit : {{memo.updated_at}}</label>
+
+        <span ng-if="memo.id">
+            <span class="btn btn-primary form-control margin-top" type='submit' ng-click="updateMemo();"/>메모 업데이트</span>
+        </span>
+        <span ng-if="!memo.id">
+            <span class="btn btn-primary form-control margin-top" type='submit' ng-click="createMemo();"/>메모 등록하기</span>
+        </span>
+        <span class="btn btn-danger form-control margin-top" type='submit' ng-click="removeMemo(memo.id);"/>메모 삭제</span>
+    </div>
+</div>
+

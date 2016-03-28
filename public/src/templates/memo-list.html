@@ -1,0 +1,29 @@
+<div class="row margin-zero">
+    <div class="col-sm-10 col-sm-offset-1">
+
+        <div class="text-center">
+            <span class="text-big">{{label.title+"&nbsp;" || ""}}Memos</span>
+        </div>
+
+        <div class="list-group margin-top">
+
+            <span ng-repeat="memo in memos" class="margin-top">
+                <a href="#/memos/{{memo.id}}" class="btn btn-default margin-top" style="width:100%; border:1px black solid;">
+                    <span class="text-big" style="font-weight:bold;">{{memo.title}}</span>
+                </a>
+            </span>
+
+            <a href="#/memos/create" ng-if="!label.id">
+                <span class="list-group-item btn btn-primary margin-top">
+                    <i class="fa fa-plus"></i>
+                </span>
+            </a>
+            <a href="#/labels/{{label.id}}/memos/create" ng-if="label.id">
+                <span class="list-group-item btn btn-primary margin-top">
+                    <i class="fa fa-plus"></i>
+                </span>
+            </a>
+
+        </div>
+    </div>
+</div>
