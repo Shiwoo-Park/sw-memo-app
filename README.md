@@ -23,17 +23,32 @@
 - install bower in global
 - Clone this repository
 - Go to project home directory
-- Install required node packages (npm install)
-- Install bootstrap-sass by bower (bower install bootstrap-sass)
-- Install font-awesome by bower (bower install font-awesome)
-- Setup environments (Database configuration)
-- 
+- Install required node packages
+- Remove package duplication
+- Install bootstrap-sass by bower
+- Install font-awesome by bower
+- Setup environments (DB config, Service Mode)
+- Run gulp
+- Start Server
 
 ### Setup (Console ver.)
 
 ```
-npm install -g gulp
-npm install -g bower
 clone https://github.com/shiwoo-park/sw-memo-app.git
 cd sw-memo-app
+
+npm install
+npm ddp
+
+npm install -g bower
+bower install bootstrap-sass
+bower install font-awesome
+
+cp .env-sample .env
+vi .env
+
+npm install -g gulp
+gulp
+
+npm start
 ```

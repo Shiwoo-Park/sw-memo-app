@@ -62,7 +62,6 @@ exports.createLabel = function (req, res, next) {
 
     var data = AppUtil.makeData({}, Models.Label.getUpdateFields(), req.body);
     Models.Label.create(data).then(function (created) {
-        console.log(created);
         if (!MyUtil.isEmptyObj(created)) res.json(created);
         else res.status(500).end("라벨 생성 실패");
     }).catch(function (err) {
@@ -78,7 +77,6 @@ exports.updateLabel = function (req, res, next) {
 
     var data = AppUtil.makeData({}, Models.Label.getUpdateFields(), req.body);
     Models.Label.update(data, {where: {id: req.params.id}}).then(function (updated) {
-        console.log(updated);
         if (updated[0] > 0) res.status(200).end("라벨 업데이트 성공");
         else res.status(500).end("라벨 업데이트 실패");
     }).catch(function (err) {
@@ -95,7 +93,6 @@ exports.deleteLabel = function (req, res, next) {
         return res.status(400).end("기본 라벨 삭제 불가");
 
     Models.Label.destroy({where: {id: req.params.id}}).then(function (deleted) {
-        console.log(deleted);
         if (deleted > 0) res.status(200).end("라벨 삭제 성공");
         else res.status(500).end("라벨 삭제 실패");
     }).catch(function (err) {

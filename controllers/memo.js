@@ -17,7 +17,7 @@ exports.getMemos = function (req, res, next) {
             })
         }).catch(function (err) {
             next(err);
-        })
+        });
 
     } else { // all memos
         Models.Memo.findAll().then(function (memos) {
@@ -39,7 +39,6 @@ exports.createMemo = function (req, res, next) {
     if (errors) return res.status(400).json(errors);
 
     var data = AppUtil.makeData({}, Models.Memo.getUpdateFields(), req.body);
-    console.log(data);
 
     Q.all([
         Models.Label.findById(labelID),
@@ -66,7 +65,6 @@ exports.updateMemo = function (req, res, next) {
 
     var data = AppUtil.makeData({}, Models.Memo.getUpdateFields(), req.body);
     Models.Memo.update(data, {where: {id: req.params.id}}).then(function (updated) {
-        console.log(updated);
         if (updated[0] > 0) res.status(200).end("메모 업데이트 성공");
         else res.status(500).end("메모 업데이트 실패");
     }).catch(function (err) {
@@ -80,7 +78,6 @@ exports.deleteMemo = function (req, res, next) {
     if (errors) return res.status(400).json(errors);
 
     Models.Memo.destroy({where: {id: req.params.id}}).then(function (deleted) {
-        console.log(deleted);
         if (deleted > 0) res.status(200).end("메모 삭제 성공");
         else res.status(500).end("메모 삭제 실패");
     }).catch(function (err) {

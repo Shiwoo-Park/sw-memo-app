@@ -5,7 +5,6 @@ var uglify = require('gulp-uglify');
 var minifyhtml = require('gulp-minify-html');
 var cleanCSS = require('gulp-clean-css');
 var sass = require('gulp-sass');
-var gulpBower = require('gulp-bower');
 var livereload = require('gulp-livereload');
 
 var src = './public/src';
@@ -87,16 +86,11 @@ gulp.task('watch', function () {
     gulp.watch(dist + '/**').on('change', livereload.changed);
 });
 
-// gulp.task('default' ['bootstrap-sass', 'fonts']);
 gulp.task('default', ['combine-js', 'fonts', 'compile-sass', 'compress-html', 'watch']);
-// gulp.task('default', ['bower', 'combine-js', 'clean-css', 'compress-html', 'watch']);
-// gulp.task('default', ['combine-js', 'compile-sass', 'compress-html', 'watch']);
-
 
 /**
  * TASKS NOT USING
  */
-
 // css 파일 합치기
 gulp.task('clean-css', function () {
     return gulp.src(paths.css)

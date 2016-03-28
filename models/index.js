@@ -5,10 +5,7 @@ var db = {
     Memo: ""
 };
 
-var fs = require("fs");
-var path = require("path");
-var Sequelize = require("sequelize");
-var sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
+var sequelizeOption = {
     host: process.env.DB_HOST,
     dialect: 'mysql',
     pool: {
@@ -16,7 +13,15 @@ var sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, proc
         min: 0,
         idle: 10000
     }
-});
+};
+if(process.env.SERVICE_MODE !== "development"){
+    sequelizeOption.logging = false;
+}
+
+var fs = require("fs");
+var path = require("path");
+var Sequelize = require("sequelize");
+var sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, sequelizeOption);
 
 fs
     .readdirSync(__dirname)
@@ -39,39 +44,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-
-/* sample model
-
- "use strict";
-
- module.exports = function(sequelize, DataTypes) {
- var Client = sequelize.define("Client", {
- client_id: {
- type:DataTypes.INTEGER,
- allowNull: false,
- primaryKey:true,
- autoIncrement: true
- },
- email: {
- type:DataTypes.STRING(50),
- allowNull: false,
- defaultValue: "NO EMAIL"
- }
- }, {
- indexes:[
- {
- unique:true,
- fields:["email"]
- }
- ],
- classMethods: {
- associate: function(models) {
- Client.hasMany(models.ClientFamily)
- }
- }
- });
-
- return Client;
- };
-
- */
