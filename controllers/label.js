@@ -22,14 +22,14 @@ exports.getLabels = function (req, res, next) {
                 promises.push(label.getMemos().then(function (memos) {
                     label.dataValues.memoCount = memos.length;
                 }));
-                Q.all(promises).then(function () {
-                    return res.json({
-                        totalCount: totalCount,
-                        labels: labels
-                    });
-                }).catch(function (err) {
-                    next(err);
+            });
+            Q.all(promises).then(function () {
+                return res.json({
+                    totalCount: totalCount,
+                    labels: labels
                 });
+            }).catch(function (err) {
+                next(err);
             });
         }).catch(function (err) {
             next(err);
