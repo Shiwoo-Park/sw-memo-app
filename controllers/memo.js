@@ -4,6 +4,9 @@ var AppUtil = require('../utils/app-utils');
 var MyUtil = require('../utils/common-utils');
 
 exports.getMemos = function (req, res, next) {
+    var errCallback = function (err) {
+        next(err);
+    };
     if (req.params.id) { // single memo
         Models.Memo.findOne({
             where: {id: req.params.id}
@@ -14,17 +17,13 @@ exports.getMemos = function (req, res, next) {
                     memo: memo,
                     labels: labels
                 })
-            })
-        }).catch(function (err) {
-            next(err);
-        });
+            }).catch(errCallback);
+        }).catch(errCallback);
 
     } else { // all memos
         Models.Memo.findAll().then(function (memos) {
             return res.json(memos);
-        }).catch(function (err) {
-            next(err);
-        })
+        }).catch(errCallback);
     }
 };
 
@@ -38,6 +37,9 @@ exports.createMemo = function (req, res, next) {
     var errors = req.validationErrors();
     if (errors) return res.status(400).json(errors);
 
+    var errCallback = function (err) {
+        next(err);
+    };
     var data = AppUtil.makeData({}, Models.Memo.getUpdateFields(), req.body);
 
     Q.all([
@@ -49,11 +51,9 @@ exports.createMemo = function (req, res, next) {
         else {
             label.addMemo(memo).then(function () {
                 res.end("메모 생성 성공");
-            });
+            }).catch(errCallback);
         }
-    }).catch(function (err) {
-        next(err);
-    });
+    }).catch(errCallback);
 };
 
 exports.updateMemo = function (req, res, next) {

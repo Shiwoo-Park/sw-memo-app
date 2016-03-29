@@ -85,7 +85,11 @@ gulp.task('watch', function () {
     gulp.watch(dist + '/**').on('change', livereload.changed);
 });
 
-gulp.task('default', ['combine-js', 'fonts', 'compile-sass', 'compress-html', 'watch']);
+gulp.task('default', ['combine-js', 'fonts', 'compile-sass', 'compress-html', 'watch'], function () {
+    // load independent files
+    return gulp.src(jsLib + '/html5shiv.min.js')
+        .pipe(gulp.dest(dist+'/js'))
+});
 
 /**
  * TASKS NOT USING

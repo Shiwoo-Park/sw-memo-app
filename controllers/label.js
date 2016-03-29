@@ -27,6 +27,8 @@ exports.getLabels = function (req, res, next) {
                         totalCount: totalCount,
                         labels: labels
                     });
+                }).catch(function (err) {
+                    next(err);
                 });
             });
         }).catch(function (err) {
@@ -52,7 +54,9 @@ exports.getAutocompleteLabels = function (req, res, next) {
             "query": "Unit",
             "suggestions": data
         });
-    })
+    }).catch(function (err) {
+        next(err);
+    });
 };
 
 exports.createLabel = function (req, res, next) {
@@ -113,8 +117,12 @@ exports.getLabelMemos = function (req, res, next) {
                 label: label,
                 memos: memos
             })
-        })
-    })
+        }).catch(function (err) {
+            next(err);
+        });
+    }).catch(function (err) {
+        next(err);
+    });
 };
 
 /**
