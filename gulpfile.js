@@ -65,6 +65,7 @@ gulp.task('js-lint', function () {
 // js 파일 합치기
 gulp.task('combine-js', ['js-lint'], function () {
     return gulp.src(paths.jslib.concat(paths.js))
+        .pipe(uglify())
         .pipe(concat('main.js'))
         .pipe(gulp.dest(dist + '/js'));
 });

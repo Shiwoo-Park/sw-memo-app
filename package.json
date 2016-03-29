@@ -1,7 +1,7 @@
 {
-  "name": "application-name",
+  "name": "sw-memo-app",
   "version": "1.0.0",
-  "description": "Simple todo application.",
+  "description": "Simple memo application.",
   "main": "server.js",
   "author": "ShiwooPark",
   "scripts": {
