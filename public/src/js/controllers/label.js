@@ -23,7 +23,7 @@ app.controller("LabelListController", function ($scope, swMemoApi) {
     };
 
 }).controller("LabelEditController", function ($scope, $routeParams, $location, swMemoApi) {
-    $scope.formData = {};
+    $scope.formData = {title:"", description:""};
 
     if ($routeParams.id) {
         swMemoApi.get("/api/labels/" + $routeParams.id).success(function (label) {

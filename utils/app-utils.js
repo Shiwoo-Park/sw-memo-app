@@ -23,7 +23,7 @@ exports.showRequestArgs = function (req, res, next) {
 
 exports.makeData = function (data, keys, reqBody) {
     keys.map(function (key) {
-        if (reqBody[key])
+        if (reqBody[key] !== undefined)
             data[key] = reqBody[key]
     });
     return data;
