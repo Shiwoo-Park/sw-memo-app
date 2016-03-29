@@ -28,10 +28,11 @@
 - Install bootstrap-sass by bower
 - Install font-awesome by bower
 - Setup environments (DB config, Service Mode)
-- Run gulp
+- Run gulp and exit by Ctrl+C after finish build (Use gulp watcher when you develop)
 - Run MySQL Server
 - Setup public/src/js/define.js (API server domain)
 - Start Server
+- Access http://localhost:8080 by web browser.
 
 ### Setup (Console ver.)
 
@@ -48,6 +49,8 @@ bower install font-awesome
 
 cp .env-sample .env
 vi .env
+
+vi public/src/js/define.js
 
 npm install -g gulp
 gulp

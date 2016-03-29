@@ -1,12 +1,15 @@
 {
   "name": "sw-memo-app",
   "version": "1.0.0",
-  "description": "Simple memo application.",
+  "description": "Simple example memo application.",
   "main": "server.js",
-  "author": "ShiwooPark",
+  "author": {
+    "name": "Shiwoo Park",
+    "email": "woozin23@gmail.com"
+  },
   "scripts": {
     "start": "node ./server.js",
-    "test": "mocha --reporter spec --timeout 5000"
+    "test": "gulp"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -15,8 +18,7 @@
     "gulp-jshint": "^2.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-minify-html": "^1.0.6",
-    "gulp-sass": "^2.2.0",
-    "gulp-uglify": "^1.5.3"
+    "gulp-sass": "^2.2.0"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",

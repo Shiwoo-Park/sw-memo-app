@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var jshint = require('gulp-jshint');
-var uglify = require('gulp-uglify');
 var minifyhtml = require('gulp-minify-html');
 var cleanCSS = require('gulp-clean-css');
 var sass = require('gulp-sass');
@@ -65,7 +64,6 @@ gulp.task('js-lint', function () {
 // js 파일 합치기
 gulp.task('combine-js', ['js-lint'], function () {
     return gulp.src(paths.jslib.concat(paths.js))
-        .pipe(uglify())
         .pipe(concat('main.js'))
         .pipe(gulp.dest(dist + '/js'));
 });
