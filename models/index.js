@@ -8,6 +8,7 @@ var db = {
 var sequelizeOption = {
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    charset: 'utf8',
     pool: {
         max: 5,
         min: 0,

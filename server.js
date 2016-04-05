@@ -69,13 +69,13 @@ models.sequelize.sync({force: isDevMode}).then(function () {
         var baseDataPromises = [
 
             // Labels
-            models.Label.create({title: "과제", description: "나의 과제"}),
+            models.Label.create({title: "TODO", description: "This is What i need to do"}),
             models.Label.create({
                 title: "살것",
-                description: "두번째 라벨 : HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your application."
+                description: "두번째 라벨 : HTML is great for declaring static documents"
             }),
             models.Label.create({title: "할것", description: ""}),
-            models.Label.create({title: "깡통라벨", description: ""}),
+            models.Label.create({title: "오키도키요", description: ""}),
             
             // Memos
             models.Memo.create({title: "test 111", content: "테스트 짧은 메모"}),
