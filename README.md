@@ -28,7 +28,7 @@
 - Install bootstrap-sass by bower
 - Install font-awesome by bower
 - Setup environments (DB config, Service Mode)
-- Run gulp and exit by Ctrl+C after finish build (Use gulp watcher when you develop)
+- Run gulp and exit by Ctrl+C after finish build (Run gulp watcher when you develop)
 - Run MySQL Server
 - Setup public/src/js/define.js (API server domain)
 - Start Server
@@ -52,8 +52,14 @@ vi .env
 
 vi public/src/js/define.js
 
+# run gulp
 npm install -g gulp
 gulp
 
+# start service
 npm start
+
+# start service as daemon
+npm install -g pm2
+pm2 start server.js --name memo
 ```

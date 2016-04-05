@@ -26,7 +26,7 @@ app.set('env', process.env.SERVICE_MODE);
 
 // app.use('/bower',  express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public/dist'));          // set the static files location /public/img will be /img for users
-if (app.get('env') === "development") app.use(morgan('dev'));    // log every request to the console
+if (app.get('env') === "development") app.use(morgan('dev')); // log every request to the console
 app.use(bodyParser.urlencoded({'extended': 'true'}));         // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());                                   // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
