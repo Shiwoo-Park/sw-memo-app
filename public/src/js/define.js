@@ -1,6 +1,8 @@
 window.APPENV = {
     // Affects to CORS issues (Reject other Cross Domain XMLHttpRequests)
-    domain: "http://localhost:8080"
+    // 접근 도메인과 아래 도메인이 일치해야 한다. 그렇지 않을 경우 Ajax Request 전부  REJECT 됨.
+    // domain: "http://localhost:8000"
+    domain: "http://127.0.0.1:8000"
 };
 
 function wrapUrl(path) {

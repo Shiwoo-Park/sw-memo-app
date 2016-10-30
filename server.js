@@ -21,7 +21,7 @@ var expressValidator = require('express-validator');
 
 // Express configuration =================
 var app = express();  // create our app w/ express
-app.set('port', process.env.HTTP_PORT || 8080);
+app.set('port', process.env.HTTP_PORT || 8000);
 app.set('env', process.env.SERVICE_MODE);
 
 // app.use('/bower',  express.static(__dirname + '/bower_components'));
@@ -46,7 +46,6 @@ app.use(expressValidator({
 }));
 app.use(methodOverride());
 
-console.log();
 var isDevMode = (process.env.SERVICE_MODE === "development");
 
 // Monitoring
